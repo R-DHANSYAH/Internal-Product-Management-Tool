@@ -33,5 +33,20 @@ The tool allows you to create, edit, delete, and assign attribute values to prod
   ![ERD](Diagrams/ERD.png)
   ## Class Diagram
   ![Class Diagram](Diagrams/Classdiagram.png)
- 
+   ---
+ ## Screenshots
+
+**Categories Page**  
+![Categories](Screenshots/Categorypage.png)
+
+**Products Page**  
+![Products](Screenshots/productpage.png)
+
+**Attributes Page**  
+![Attributes](Screenshots/Attributepage.png)
+
+**Attribute Values Page**  
+![Attribute Values](Screenshots/attributevaluespage.png)
+
+
 
