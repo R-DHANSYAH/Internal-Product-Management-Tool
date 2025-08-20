@@ -28,7 +28,10 @@ The tool allows you to create, edit, delete, and assign attribute values to prod
   
   ---
   ## Diagrams
+  
+  ## ERD (Entity Relationship Diagram) 
   ![ERD](Diagrams/ERD.png)
+  ## Class Diagram
   ![Class Diagram](Diagrams/Classdiagram.png)
  
 
