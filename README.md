@@ -15,6 +15,6 @@ A web-based tool to manage products, categories, and internal user roles.
 
 ## Diagrams
 ![ERD Diagram](Diagrams/ERD.png)
-![Class Diagram](Diagrams/Class Diagram.png)
+![Class Diagram](Diagrams/Classdiagram.png)
 
 
