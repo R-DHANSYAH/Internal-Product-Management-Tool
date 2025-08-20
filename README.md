@@ -23,6 +23,12 @@ The tool allows you to create, edit, delete, and assign attribute values to prod
 
 - **Backend**: Python 3.13, Flask  
 - **Database**: SQLite (via SQLAlchemy ORM)  
-- **Frontend**: HTML, CSS (inline in `base.html`)  
-- **Dependencies**: Listed in `requirements.txt`  
+- **Frontend**: HTML, CSS  
+- **Dependencies**: Listed in `requirements.txt`
+  
+  ---
+  ## Diagrams
+  ![ERD](Diagrams/ERD.png)
+  ![Class Diagram](Diagrams/Class_Diagram.png)
+ 
 
