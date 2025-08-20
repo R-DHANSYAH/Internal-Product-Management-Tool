@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Edit Attribute</h2>
+<form method="POST">
+    <label>Name:</label><br>
+    <input type="text" name="name" value="{{ attribute.name }}" required><br>
+    <label>Data Type:</label><br>
+    <select name="data_type" required>
+        <option value="string" {% if attribute.data_type=='string' %}selected{% endif %}>String</option>
+        <option value="number" {% if attribute.data_type=='number' %}selected{% endif %}>Number</option>
+    </select><br>
+    <label>Category:</label><br>
+    <select name="category" required>
+        {% for cat in categories %}
+        <option value="{{ cat.id }}" {% if attribute.category_id==cat.id %}selected{% endif %}>{{ cat.name }}</option>
+        {% endfor %}
+    </select><br>
+    <button type="submit">Update Attribute</button>
+</form>
+{% endblock %}

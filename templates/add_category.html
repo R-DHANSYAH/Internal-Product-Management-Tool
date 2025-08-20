@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add Category</h2>
+<form method="POST" action="{{ url_for('add_category') }}">
+    <label>Name:</label><br>
+    <input type="text" name="name" required><br>
+    <label>Description:</label><br>
+    <input type="text" name="description" required><br>
+    <button type="submit">Add Category</button>
+</form>
+
+<h3>Existing Categories</h3>
+<table>
+<tr><th>Name</th><th>Description</th><th>Actions</th></tr>
+{% for cat in categories.items %}
+<tr>
+<td>{{ cat.name }}</td>
+<td>{{ cat.description }}</td>
+<td>
+    <a class="btn btn-edit" href="{{ url_for('edit_category', id=cat.id) }}">Edit</a>
+    <a class="btn btn-delete" href="{{ url_for('delete_category', id=cat.id) }}">Delete</a>
+</td>
+</tr>
+{% else %}
+<tr><td colspan="3">No categories yet.</td></tr>
+{% endfor %}
+</table>
+
+<div class="pagination">
+{% for page_num in categories.iter_pages() %}
+    {% if page_num %}
+        <a href="{{ url_for('index', page=page_num) }}">{{ page_num }}</a>
+    {% else %}
+        ...
+    {% endif %}
+{% endfor %}
+</div>
+{% endblock %}

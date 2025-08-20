@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Assign Attribute Values</h2>
+{% for product in products.items %}
+<div class="attribute-block">
+    <h3>Product: {{ product.name }} (Stock: {{ product.stock }})</h3>
+    <form method="POST" action="{{ url_for('assign_value') }}">
+        <input type="hidden" name="product" value="{{ product.id }}">
+        {% for attr in product.category.attributes %}
+            <label>{{ attr.name }}:</label>
+            <input type="text" name="value_{{ attr.id }}" 
+                   value="{% for v in product.attribute_values if v.attribute_id==attr.id %}{{ v.value }}{% endfor %}">
+            <br>
+        {% endfor %}
+        <button type="submit">Save / Update</button>
+    </form>
+</div>
+{% endfor %}
+
+<div class="pagination">
+{% for page_num in products.iter_pages() %}
+    {% if page_num %}
+        <a href="{{ url_for('values', page=page_num) }}">{{ page_num }}</a>
+    {% else %}
+        ...
+    {% endif %}
+{% endfor %}
+</div>
+{% endblock %}

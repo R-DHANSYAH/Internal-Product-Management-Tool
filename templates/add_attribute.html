@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add Attribute</h2>
+<form method="POST" action="{{ url_for('add_attribute') }}">
+    <label>Name:</label><br>
+    <input type="text" name="name" required><br>
+    <label>Data Type:</label><br>
+    <select name="data_type" required>
+        <option value="string">String</option>
+        <option value="number">Number</option>
+    </select><br>
+    <label>Category:</label><br>
+    <select name="category" required>
+        {% for cat in categories %}
+        <option value="{{ cat.id }}">{{ cat.name }}</option>
+        {% endfor %}
+    </select><br>
+    <button type="submit">Add Attribute</button>
+</form>
+
+<h3>Existing Attributes</h3>
+<table>
+<tr><th>Name</th><th>Data Type</th><th>Category</th><th>Actions</th></tr>
+{% for attr in existing_attributes.items %}
+<tr>
+<td>{{ attr.name }}</td>
+<td>{{ attr.data_type }}</td>
+<td>{{ attr.category.name if attr.category else '' }}</td>
+<td>
+    <a class="btn btn-edit" href="{{ url_for('edit_attribute', id=attr.id) }}">Edit</a>
+    <a class="btn btn-delete" href="{{ url_for('delete_attribute', id=attr.id) }}">Delete</a>
+</td>
+</tr>
+{% else %}
+<tr><td colspan="4">No attributes yet.</td></tr>
+{% endfor %}
+</table>
+
+<div class="pagination">
+{% for page_num in existing_attributes.iter_pages() %}
+    {% if page_num %}
+        <a href="{{ url_for('attributes', page=page_num) }}">{{ page_num }}</a>
+    {% else %}
+        ...
+    {% endif %}
+{% endfor %}
+</div>
+{% endblock %}

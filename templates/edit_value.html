@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Edit Attribute Value</h2>
+<form method="POST">
+    <label>Product:</label>
+    <select name="product" required>
+        {% for prod in products %}
+        <option value="{{ prod.id }}" {% if value.product_id==prod.id %}selected{% endif %}>{{ prod.name }}</option>
+        {% endfor %}
+    </select>
+    <label>Attribute:</label>
+    <select name="attribute" required>
+        {% for attr in attributes %}
+        <option value="{{ attr.id }}" {% if value.attribute_id==attr.id %}selected{% endif %}>{{ attr.name }}</option>
+        {% endfor %}
+    </select>
+    <label>Value:</label>
+    <input type="text" name="value" value="{{ value.value }}" required>
+    <button type="submit">Update Value</button>
+</form>
+<a href="{{ url_for('values') }}">Back</a>
+{% endblock %}
